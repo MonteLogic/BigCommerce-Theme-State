@@ -1,0 +1,120 @@
+---
+brand:
+    products:
+        limit: {{theme_settings.brandpage_products_per_page}}
+
+        category:
+            shop_by_price: true
+            products:
+                limit: {{theme_settings.categorypage_products_per_page}}
+
+blog:
+    recent_posts:
+        limit: {{theme_settings.homepage_blog_posts_count}}
+---
+{{inject "brandProductsPerPage" theme_settings.brandpage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.brand.previous}}
+        <link rel="prev" href="{{pagination.brand.previous}}">
+    {{/if}}
+    {{#if pagination.brand.next}}
+        <link rel="next" href="{{pagination.brand.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "page"}}
+    <div class="sideCategoryList brand-page" id="side-categories" data-menu>
+        <div class="categories">
+            <h2 class="container-header">{{lang 'sidenav_headers.categories_header'}}</h2>
+            <div class="category-list">
+                {{#each categories}}
+                    <li class="navPages-item">
+                        {{> components/common/navigation-list-alternate}}
+                    </li>
+                {{/each}}
+            </div> <!-- category-list -->
+        </div> <!-- categories -->
+        <div class="brands-option{{#if theme_settings.brands_visibility '!==' 'no-brands'}} with-brands{{/if}}">
+          <div class="brands">
+            <h2 class="container-header">{{lang 'sidenav_headers.brands_header'}}</h2>
+            <div class="brands-list">
+              {{#each shop_by_brand}}
+                  <li>
+                      <a href="{{url}}">{{name}}</a>
+                  </li>
+              {{/each}}
+                  <li>
+                      <a href="/brands/">View all Brands</a>
+                  </li>
+            </div> <!-- brand-list -->
+          </div> <!--brands-->
+        </div> <!--brands-option-->
+          <div class="shop-by-price" id="faceted-search-container">
+            {{> components/brand/sidebar}}
+          </div>
+    </div> <!-- sideCategoryList -->
+
+    <div class="sideCategoryList mobile">
+          <!-- FACETED PRICE SEARCH GETS MOVED HERE ON MOBILE -->
+    </div>
+
+<div class="brand main {{#if theme_settings.top_pagination_visibility '===' false}}top-pagination-hidden {{/if}} {{#if theme_settings.bottom_pagination_visibility '===' false}}bottom-pagination-hidden {{/if}}">
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+<h2 class="container-header">{{brand.name}}</h1>
+  {{#if banners.top}}
+          <div class="banners" data-banner-location="top">
+              <div class="banner">
+              {{{limit banners.top 1}}}
+              </div> <!-- banner -->
+          </div> <!-- banners -->
+  {{/if}}
+{{#if brand.image}}
+<!-- <div class="brand-main-image">
+  <img src="{{getImage brand.image 'thumb'}}">
+</div> -->
+{{/if}}
+{{{snippet 'brand'}}}
+
+<!-- GRID/LIST TOGGLE BUTTONS - GRID BY DEFAULT -->
+{{#if theme_settings.product_layout_view '===' 'both_grid_default'}}
+  <div class="grid-list-view toggle">
+    <a class="toggle-link grid active" href="#" title="Toggle Grid View"><svg class="toggle grid"><use xlink:href="#icon-grid"></use></svg></a>
+    <a class="toggle-link list" href="#" title="Toggle List View"><svg class="toggle list"><use xlink:href="#icon-list"></use></svg></a>
+    <div class="clear"></div>
+  </div>
+{{/if}}
+
+<!-- GRID/LIST TOGGLE BUTTONS - LIST BY DEFAULT -->
+{{#if theme_settings.product_layout_view '===' 'both_list_default'}}
+  <div class="grid-list-view toggle">
+    <a class="toggle-link list active" href="#" title="Toggle List View"><svg class="toggle list"><use xlink:href="#icon-list"></use></svg></a>
+    <a class="toggle-link grid" href="#" title="Toggle Grid View"><svg class="toggle grid"><use xlink:href="#icon-grid"></use></svg></a>
+    <div class="clear"></div>
+  </div>
+{{/if}}
+<div class="page">
+    <main class="page-content {{#if theme_settings.product_layout_view '===' 'both_grid_default'}} both-grid-list-views {{/if}} {{#if theme_settings.product_layout_view '===' 'both_list_default'}} both-grid-list-views{{/if}}" id="product-listing-container">
+        {{#if brand.products}}
+            {{> components/brand/product-listing}}
+        {{else}}
+            <p>{{lang 'brands.no_products'}}</p>
+        {{/if}}
+    </main>
+
+    <div class="compare">
+            <a class="navUser-action navUser-item--compare" href="{{urls.compare}}" data-compare-nav>{{lang 'Compare Selected'}}</a>
+    </div>
+
+    <div class="clear"></div>
+    {{#if banners.bottom}}
+        <div class="banners" data-banner-location="bottom">
+            <div class="banner">
+            {{{limit banners.bottom 1}}}
+            </div> <!-- banner -->
+        </div> <!-- banners -->
+    {{/if}}
+</div>
+</div>
+
+{{/partial}}
+{{> layout/base}}

@@ -1,0 +1,51 @@
+<div class="ogClosed">
+
+
+  <div id="modal-quote-form" class="center-modal" data-reveal>
+  
+    <div class="modal-header">
+        <h2 class="modal-header-title">Submit A Quote</h2>
+        <a href="#" class="modal-close" aria-label="{{lang 'common.close'}}" role="button">
+            <span aria-hidden="true">&#215;</span>
+        </a>
+    </div>
+    <div class="modal-body">
+        <div class="writeReview-productDetails">
+            <img src="{{getImage product.main_image 'product_size' (cdn theme_settings.default_image_product)}}">
+            <h6 class="product-brand">{{ product.brand.name }}</h6>
+            <h5 class="product-title">{{ product.title }}</h5>
+        </div>
+        <form id="contactForm">
+          <p>
+            <label>Name</label>
+            <input class="name1" type="text" name="name" id="name" required>
+          </p>
+          <p>
+            <label>Company</label>
+            <input class="company1" type="text" name="company" id="company">
+          </p>
+          <p>
+            <label>Email Address</label>
+            <input class="email-address-1" type="email" name="email" id="email" required>
+          </p>
+          <p>
+            <label>Phone Number</label>
+            <input class="phone-number-1" type="text" name="phone" id="phone">
+          </p>
+          <p class="full">
+            <label>Message</label>
+            <textarea class="message-1" name="message" rows="5" id="message"></textarea>
+          </p>
+          <p class="full">
+            <button id="firebase-submit" type="submit">Submit</button>
+          </p>
+        </form>
+  
+        <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+        <script src="product.js"></script>
+     </div>
+  </div>
+  </div>
+  
+  
+  

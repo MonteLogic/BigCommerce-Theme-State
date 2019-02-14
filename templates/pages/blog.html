@@ -1,0 +1,25 @@
+---
+blog:
+    posts:
+        limit: 6
+        pages: 3
+        summary: 125
+    recent_posts:
+        limit: {{theme_settings.homepage_blog_posts_count}}
+---
+{{#partial "page"}}
+
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+<main class="page blog {{#if theme_settings.top_pagination_visibility '===' false}}top-pagination-hidden {{/if}} {{#if theme_settings.bottom_pagination_visibility '===' false}}bottom-pagination-hidden {{/if}}">
+    <h1 class="page-heading">{{ blog.name }}</h1>
+
+    {{#each blog.posts}}
+        {{> components/blog/post post=this settings=../settings}}
+    {{/each}}
+
+    {{> components/common/paginator pagination.blog}}
+</main>
+
+{{/partial}}
+{{> layout/base}}
