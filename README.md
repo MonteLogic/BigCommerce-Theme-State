@@ -12,4 +12,8 @@ https://lonestartemplates.com/shop/parts-warehouse-theme/
 
 
 # TODO
-Develop Backend that receives the inputs similar to CRM. 
+On mobile the cards dont algin side to side on some cards. 
+
+Develop Backend that receives the inputs similar to CRM. - QuoteHub
+
+
