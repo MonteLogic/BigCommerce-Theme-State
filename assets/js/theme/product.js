@@ -69,7 +69,21 @@ export default class Product extends PageManager {
     }
 }
 
-// Dennis DNO Code 
+
+
+if($('#modal-quote-form').length){
+    quotePageOnly();
+}
+
+
+
+
+
+
+function quotePageOnly(){
+    // quote page only code
+    // Dennis DNO Code 
+    console.log("quotePageOnly");
 
 $(document).ready(function(){
     $("#specialId").click(function(){
@@ -149,3 +163,29 @@ $(document).ready(function(){
         $('#contactForm').trigger('reset');
      });
   });
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
