@@ -1,0 +1,42 @@
+<nav>
+    <div class="sideCategoryList category-page" id="side-categories" data-menu>
+        <div class="categories">
+            <h2 class="container-header">{{lang 'sidenav_headers.categories_header'}}</h2>
+            <div class="category-list">
+                {{#each categories}}
+                    <li class="navPages-item">
+                        {{> components/common/navigation-list-alternate}}
+                    </li>
+                {{/each}}
+            </div> <!-- category-list -->
+        </div> <!-- categories -->
+        <div class="brands-option{{#if theme_settings.brands_visibility '!==' 'no-brands'}} with-brands{{/if}}">
+          <div class="brands">
+            <h2 class="container-header">{{lang 'sidenav_headers.brands_header'}}</h2>
+            <div class="brands-list">
+              {{#each shop_by_brand}}
+                  <li>
+                      <a href="{{url}}">{{name}}</a>
+                  </li>
+              {{/each}}
+                  <li>
+                      <a href="/brands/">View all Brands</a>
+                  </li>
+            </div> <!-- brand-list -->
+          </div> <!--brands-->
+        </div> <!--brands-option-->
+        <div class="shop-by-price">
+          {{#or category.subcategories category.faceted_search_enabled category.shop_by_price}}
+            <div class="filters" id="faceted-search-container">
+              <!-- <h2 class="container-header">Refine By</h2> -->
+              {{> components/category/sidebar}}
+            </div>
+          {{/or}}
+
+        </div>
+    </div> <!-- sideCategoryList -->
+
+  <div class="sideCategoryList mobile">
+        <!-- FACETED PRICE SEARCH GETS MOVED HERE ON MOBILE -->
+  </div>
+</nav>

@@ -1,0 +1,12 @@
+{
+  "normalStoreUrl": "https://kwgraphicsdirect.com",
+  "port": 3000,
+  "clientId": "442n2y9ua2p4qn6wkf5egmdkkxvk47n",
+  "accessToken": "osvp850llbjgktipkqk6frf6xpdu7fo",
+  "customLayouts": {
+    "brand": {},
+    "category": {},
+    "page": {},
+    "product": {}
+  }
+}

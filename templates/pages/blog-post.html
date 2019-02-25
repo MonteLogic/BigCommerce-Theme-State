@@ -1,0 +1,13 @@
+---
+blog:
+    recent_posts:
+        limit: {{theme_settings.homepage_blog_posts_count}}
+---
+{{#partial "page"}}
+<div class="blog single">
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+{{> components/blog/post post=blog.post show_tags=true}}
+</div>
+{{/partial}}
+{{> layout/base}}

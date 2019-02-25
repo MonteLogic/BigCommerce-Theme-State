@@ -1,0 +1,144 @@
+<div class="pagination top">
+    <ul class="pagination-list">
+        {{#if previous}}
+            <li class="pagination-item pagination-item--previous">
+                <a class="pagination-link" href="{{previous}}" {{#unless reload}}data-faceted-search-facet{{/unless}}>
+                    <i class="icon" aria-hidden="true">
+                        <svg>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-chevron-left"></use>
+                        </svg>
+                    </i>
+                    {{lang 'common.previous'}}
+                </a>
+            </li>
+        {{/if}}
+        {{#each links}}
+            {{#if this.number '==' ../current}}
+                <li class="pagination-item pagination-item--current">
+                    <a class="pagination-link" href="{{this.url}}" {{#unless reload}}data-faceted-search-facet{{/unless}}>{{this.number}}</a>
+                </li>
+            {{else}}
+                <li class="pagination-item">
+                    <a class="pagination-link" href="{{this.url}}" {{#unless reload}}data-faceted-search-facet{{/unless}}>{{this.number}}</a>
+                </li>
+            {{/if}}
+        {{/each}}
+
+        {{#if next}}
+            <li class="pagination-item pagination-item--next">
+                <a class="pagination-link" href="{{next}}" {{#unless reload}}data-faceted-search-facet{{/unless}}>
+                    {{lang 'common.next'}}
+                    <i class="icon" aria-hidden="true">
+                        <svg>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-chevron-right"></use>
+                        </svg>
+                    </i>
+                </a>
+            </li>
+        {{/if}}
+    </ul>
+</div>
+
+<div class="pagination bottom">
+    <ul class="pagination-list">
+        {{#if previous}}
+            <li class="pagination-item pagination-item--previous">
+                <a class="pagination-link" href="{{previous}}" {{#unless reload}}data-faceted-search-facet{{/unless}}>
+                    <i class="icon" aria-hidden="true">
+                        <svg>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-chevron-left"></use>
+                        </svg>
+                    </i>
+                    {{lang 'common.previous'}}
+                </a>
+            </li>
+        {{/if}}
+        {{#each links}}
+            {{#if this.number '==' ../current}}
+                <li class="pagination-item pagination-item--current">
+                    <a class="pagination-link" href="{{this.url}}" {{#unless reload}}data-faceted-search-facet{{/unless}}>{{this.number}}</a>
+                </li>
+            {{else}}
+                <li class="pagination-item">
+                    <a class="pagination-link" href="{{this.url}}" {{#unless reload}}data-faceted-search-facet{{/unless}}>{{this.number}}</a>
+                </li>
+            {{/if}}
+        {{/each}}
+
+        {{#if next}}
+            <li class="pagination-item pagination-item--next">
+                <a class="pagination-link" href="{{next}}" {{#unless reload}}data-faceted-search-facet{{/unless}}>
+                    {{lang 'common.next'}}
+                    <i class="icon" aria-hidden="true">
+                        <svg>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-chevron-right"></use>
+                        </svg>
+                    </i>
+                </a>
+            </li>
+        {{/if}}
+    </ul>
+</div>
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous">
+</script>
+
+<script>
+$( document ).ready(function() {
+$('span.custom-checkbox').on ('click', function() {
+    $(this).toggleClass('selected');
+		$('span.custom-checkbox input').attr('checked', false);
+});
+});
+</script>
+
+<script>
+$( document ).ready(function() {
+	$('span.custom-checkbox').on ('click', function() {
+	$('span.custom-checkbox.selected input').attr('checked', true);
+});
+});
+</script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script>
+<script>
+$( document ).ready(function() {
+$("a.pagination-link").on ('click', function() {
+	if ( $( '.toggle-link.grid' ).hasClass( "active" ) ) {
+	Pace.on('done', function() {
+  	$('.toggle-link.grid').trigger("click");
+		$('ul.productGrid').addClass('visible');
+		$('ul.productList').removeClass('visible');
+    // $('html,body').animate({
+    //             scrollTop: $("main.page-content").offset().top-50
+    //           }, 200);
+		});
+	}
+});
+
+$("a.pagination-link").on ('click', function() {
+	if ( $( '.toggle-link.list' ).hasClass( "active" ) ) {
+	Pace.on('done', function() {
+  	$('.toggle-link.list').trigger("click");
+		$('ul.productGrid').removeClass('visible');
+		$('ul.productList').addClass('visible');
+    // $('html,body').animate({
+    //             scrollTop: $("main.page-content").offset().top-50
+    //           }, 200);
+		});
+	}
+});
+});
+
+$('div#facetedSearch-navList a').on ('click', function() {
+  Pace.on('done', function() {
+    // $('html,body').animate({
+    //             scrollTop: $("main.page-content").offset().top-50
+    //           }, 200);
+  });
+});
+</script>
